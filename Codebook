@@ -1,0 +1,27 @@
+The subject and activity vectors are read in, both as numeric factor dataframes.
+Subjects from: ./UCI HAR Dataset/test/subject_test.txt
+Activities from: ./UCI HAR Dataset/test/y_test.txt
+
+For each factor activity in the activity dataframe the activity labels are assigned to each activity. The activity labels come from ./UCI HAR Dataset/activity_labels.txt file.
+
+The test / train datasets are read into R as data frames from test files in ./UCI HAR Dataset/test/X_test.txt. Similarly for train.
+
+The data features (statistical features recorded by the researchers) are read from ./UCI HAR Dataset/features.txt.
+
+Each variable in the test / train dataframe is assigned its feature variable name.
+
+The subject, activity and test / train datasets are merged column wise.
+
+The names of both test and train variables (the statistical features) are made unique, to allow them to be merged by row later.
+
+The data frames are merged to make one large data frame consisting of the test and train data sets.
+
+Only those variables (features) that deal with the mean or standard deviation are selected and a subset of the data collected.
+
+The data frame is ordered by subject number.
+
+A tibble is created that groups by activity THEN subject, to allow for easy comparison between subjects on the same activity.
+
+The mean of the variables (features detailing mean and standard deviation) are summarised by the mean withing their groups.
+
+Finally thre resulting table is printed to a csv file. This gives the mean of each of the features by activity and subject.
